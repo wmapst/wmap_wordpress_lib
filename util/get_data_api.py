@@ -4,16 +4,16 @@ import requests
 import json
 from . import html_stripper
  
-def request_data_api(host_url):
-    request_url = host_url + '/wp-json/wp/v2/posts?_embed'
+def request_data_api(host_url, per_page):
+    request_url = host_url + '/wp-json/wp/v2/posts?per_page=' + str(per_page) + '&_embed'
 
     request_results = requests.get(request_url)
  
     return request_results.json()
 
 # wordpressから取得したデータを整形
-def make_source(host_url, description_limit):
-    wp_data = request_data_api(host_url)
+def make_source(host_url, description_limit, per_page):
+    wp_data = request_data_api(host_url, per_page)
     wp_contents = []
 
     for data in wp_data:
