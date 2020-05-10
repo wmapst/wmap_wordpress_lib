@@ -1,0 +1,19 @@
+{%- extends "layout.html" %}
+{%- block content %}
+<div class="wp-contents">
+    {% for contents in wp_contents %}
+        <a href="{{contents.wp_link}}" class="wp-link">
+            <article class="wp-article">
+                <figure class="wp-imagebox">
+                    <img src="{{contents.wp_image}}" alt="{{contents.wp_title}}" class="wp-image" />
+                </figure>
+                <div class="wp-caption">
+                    <h3 class="wp-title">{{contents.wp_title}}</h3>
+                    <p class="wp-description">{{contents.wp_description}}</p>
+                    <p class="wp-date">{{contents.wp_date}}</p>
+                </div>
+            </article>
+        </a>
+    {% endfor %}
+</div>
+{%- endblock %}
